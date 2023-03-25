@@ -6,28 +6,26 @@ import { Steps } from "../terapy/utils";
 export const Modality = () => {
   return (
     <Container id="therapy-modality">
-      <div className="flex flex-col gap-10">
+      <div className="flex flex-col gap-8">
         <div className=" flex flex-col gap-2">
-          <Subtitle subtitle="Modalidad de Terapia" />
-          <Text>
+          <Subtitle subtitle="Proceso Terapeutico" />
+          {/* <Text>
             <>
               El proceso terapéutico consta de tres etapas: Evaluación,
-              Tratamiento y Seguimiento. Cada una de ellas cumple una función
-              específica en el abordaje de los problemas que aquejan al
-              consultante, y juntas conforman un camino hacia la solución y
-              prevención de futuros malestares
+              Tratamiento y Seguimiento. Evaluación,
+              Tratamiento y Seguimiento.
             </>
-          </Text>
+          </Text> */}
         </div>
-        <div className="lg:flex gap-5">
+        <div className="lg:flex-row flex flex-col gap-5 gap-5">
           {Steps.map((item) => (
-            <article key={item.id} className="w-full p-2 rounded shadow-lg">
-              <h2 className="text-3xl font-bold opacity-75">{item.step}</h2>
+            <article
+              key={item.id}
+              className="flex flex-col gap-2 w-full p-8 border rounded-lg hover:shadow-2xl"
+            >
+              <h2 className="text-3xl font-bold">{item.step}</h2>
               <div className="flex items-center gap-5">
-                <span
-                  // className="text-xl font-medium opacity-75"
-                  className="rounded font-semibold text-gray-600"
-                >
+                <span className="rounded font-semibold opacity-75">
                   {item.title}
                 </span>
                 <div className="h-px flex-auto bg-gray-100"></div>

@@ -6,10 +6,12 @@ export const Link = ({ label }: any) => {
       </button> */}
       <a
         href="#"
-        className="font-medium text-xl cursor-pointer hover:bg-gray-100 active:bg-gray-100 focus:outline-none  rounded-xl p-2"
+        className="font-medium text-xl cursor-pointer m-1 p-3  hover:shadow-lg rounded-xl"
       >
         {label}
-        <span className="px-2" aria-hidden="true">&rarr;</span>
+        <span className="px-2" aria-hidden="true">
+          &rarr;
+        </span>
       </a>
     </div>
   );
