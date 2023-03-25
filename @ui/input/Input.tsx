@@ -2,10 +2,10 @@ interface InputProps {
   label: string;
   name: string;
   id: string;
-  onChange: () => void;
+  onChange: (e: React.ChangeEvent<any>) => void;
   onBlur: any;
   type: string;
-  error: boolean;
+  error?: boolean;
 }
 
 export const Input = ({
@@ -17,7 +17,6 @@ export const Input = ({
   type,
   error,
 }: InputProps) => {
-  console.log(error);
   const errorClass =
     "bg-red-50 border border-red-500 text-red-900 placeholder-red-700 rounded-lg block w-full  py-2 px-3.5";
   const normalClass = "border border-b block w-full rounded-lg  py-2 px-3.5";

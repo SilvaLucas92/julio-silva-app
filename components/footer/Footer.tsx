@@ -2,8 +2,10 @@ import { Container } from "@@//@ui/section-container/Container";
 
 export const Footer = () => {
   return (
-    <Container>
-      <p>Developed by Lucas Silva</p>
+    <Container id="footer">
+      <>
+        <p>Developed by <span className="underline">Lucas Silva</span> - 2023</p>
+      </>
     </Container>
   );
 };

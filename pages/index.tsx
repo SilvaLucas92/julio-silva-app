@@ -2,6 +2,7 @@ import Head from "next/head";
 import Image from "next/image";
 import { Poppins } from "next/font/google";
 import Layout from "../components/layout/Layout";
+import TransitionAnimate from "../@ui/transition/TransitionAnimate";
 
 const inter = Poppins({
   subsets: ["latin"],
@@ -18,7 +19,9 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={inter.className}>
-        <Layout />
+        <TransitionAnimate>
+          <Layout />
+        </TransitionAnimate>
       </main>
     </>
   );

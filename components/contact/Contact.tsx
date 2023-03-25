@@ -27,17 +27,15 @@ export const Contact = () => {
         "El mensaje de la consulta es un campo requerido"
       ),
     }),
-    onSubmit: (e) => console.log(e),
+    onSubmit: (e) => alert(e.name + "-" + e.email + e.message),
   });
-
-  console.log(values, errors, touched);
   return (
     <Container id="contact">
       <>
         <Subtitle subtitle="Contacto" />
 
         <div className="flex flex-col gap-5 w-full">
-          <form className="my-5">
+          <form className="my-5" onSubmit={handleSubmit}>
             <div className="my-2">
               <Input
                 onChange={handleChange}
@@ -46,7 +44,7 @@ export const Contact = () => {
                 name="name"
                 label="Nombre"
                 type="text"
-                error={touched.name && errors.name}
+                error={touched.name && errors.name ? true : false}
               />
               {touched.name && errors.name && (
                 <div>
@@ -62,7 +60,7 @@ export const Contact = () => {
                 label="Email"
                 type="text"
                 onChange={handleChange}
-                error={touched.email && errors.email}
+                error={touched.email && errors.email ? true : false}
               />
               {touched.email && errors.email && (
                 <div>
@@ -79,7 +77,7 @@ export const Contact = () => {
                 name="message"
                 label="Consulta"
                 type="textarea"
-                error={touched.message && errors.message}
+                error={touched.message && errors.message ? true : false}
               />
               {touched.message && errors.message && (
                 <div>
@@ -89,7 +87,7 @@ export const Contact = () => {
             </div>
             <div>
               <button
-                className="border border-b block w-full rounded-lg  py-2 px-3.5 my-2"
+                className="border border-b block w-full rounded-lg  py-2 px-3.5 my-2 bg-black hover:opacity-75 text-white"
                 type="submit"
               >
                 Enviar
