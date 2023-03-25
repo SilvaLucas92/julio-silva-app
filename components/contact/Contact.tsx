@@ -87,7 +87,7 @@ export const Contact = () => {
             </div>
             <div>
               <button
-                className="border border-b block w-full rounded-lg  py-2 px-3.5 my-2 bg-black hover:opacity-75 text-white"
+                className="block w-full my-5 rounded-md bg-black px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-white hover:text-black border   hover:border-black"
                 type="submit"
               >
                 Enviar
