@@ -1,18 +1,16 @@
-const styleBtn = {
-  filled:
-    "block rounded-md bg-black px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-white hover:text-black border hover:border-black  ",
-};
 interface BtnProps {
   variant: string;
   children: JSX.Element;
+  width?: string;
 }
 
-interface StylesProps {
-  filled: string;
-}
-export const Button = ({ variant, children }: BtnProps) => {
+export const Button = ({ children, width }: BtnProps) => {
   return (
-    <button className={styleBtn[variant as keyof StylesProps]}>
+    <button
+      className={`w-${
+        width ? width : "auto"
+      } block rounded-md bg-black px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-white hover:text-black border hover:border-black  `}
+    >
       {children}
     </button>
   );

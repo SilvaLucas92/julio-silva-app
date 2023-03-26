@@ -12,6 +12,7 @@ interface InputProps {
   disabled?: boolean;
   valid?: boolean;
   rounded?: string;
+  errorMsg?: string;
 }
 
 interface StylesProps {
@@ -25,10 +26,10 @@ interface StylesProps {
 }
 
 const styles = {
-  base: "rounded-lg border-transparent flex-1 appearance-none border w-full py-2 px-3.5 bg-white text-gray-700  shadow-sm text-base focus:outline-none focus:ring-2 focus:border-transparent ",
+  base: "rounded-lg flex-1 appearance-none  w-full py-2 px-3.5 bg-white text-gray-700  shadow-sm text-base",
   state: {
-    normal: " placeholder-gray-400 border-gray-300 focus:ring-purple-600 ",
-    error: " border-red-600 focus:ring-red-600 ",
+    normal: ` border border-trasparent placeholder-gray-400 border-gray-300 focus:ring-purple-600`,
+    error: `border border-red-600 focus:ring-red-600  `,
     valid: " border-green-600 focus:ring-green-600 ",
     disabled: " cursor-not-allowed bg-gray-100 shadow-inner text-gray-400 ",
   },
@@ -41,20 +42,13 @@ export const Input = ({
   onChange,
   onBlur,
   type,
-  error = true,
+  error,
   disabled = false,
   valid = false,
+  errorMsg,
   ...rest
 }: InputProps) => {
-  const classPath = useMemo(() => {
-    const path = `${
-      error
-        ? `border border-red-600 focus:ring-red-600  `
-        : ` border border-trasparent placeholder-gray-400 border-gray-300 focus:ring-purple-600`
-    } rounded-lg flex-1 appearance-none  w-full py-2 px-3.5 bg-white text-gray-700  shadow-sm text-base  `;
-    return path;
-  }, [error]);
-  console.log(classPath);
+
   return (
     <div className="flex flex-col gap-1">
       <label className="text-black" htmlFor={name}>
@@ -66,7 +60,13 @@ export const Input = ({
           id={id}
           type="text"
           onChange={onChange}
-          className={classPath}
+          // className={classPath}
+          className={clsx([
+            styles.base,
+            error ? styles.state.error : styles.state.normal,
+            valid ? styles.state.valid : styles.state.normal,
+            disabled && styles.state.disabled,
+          ])}
           onBlur={onBlur}
           {...rest}
         />
@@ -76,10 +76,19 @@ export const Input = ({
           id={id}
           onChange={onChange}
           onBlur={onBlur}
-          className={classPath}
+          // className={classPath}
+          className={clsx([
+            styles.base,
+            error ? styles.state.error : styles.state.normal,
+            valid ? styles.state.valid : styles.state.normal,
+            disabled && styles.state.disabled,
+          ])}
           {...rest}
         ></textarea>
       )}
+      <div>
+        <p className="text text-red-500">{errorMsg}</p>
+      </div>
     </div>
   );
 };
