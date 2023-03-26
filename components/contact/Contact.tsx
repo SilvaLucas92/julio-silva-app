@@ -1,8 +1,8 @@
-import { Input } from "@@//@ui/input/Input";
-import { Text } from "@@//@ui/paragraps/Text";
+import { Button } from "@@//@ui/button/Button";
+import { ErrorMsg, Input } from "@@//@ui/input/Input";
 import { Container } from "@@//@ui/section-container/Container";
 import { Subtitle } from "@@//@ui/titles/Subtitle";
-import { Title } from "@@//@ui/titles/Title";
+import { IconMailForward } from "@tabler/icons-react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 export const Contact = () => {
@@ -46,11 +46,7 @@ export const Contact = () => {
                 type="text"
                 error={touched.name && errors.name ? true : false}
               />
-              {touched.name && errors.name && (
-                <div>
-                  <p className="text text-red-600">{errors.name}</p>
-                </div>
-              )}
+              {touched.name && errors.name && <ErrorMsg error={errors.name} />}
             </div>
             <div className="my-2">
               <Input
@@ -63,9 +59,7 @@ export const Contact = () => {
                 error={touched.email && errors.email ? true : false}
               />
               {touched.email && errors.email && (
-                <div>
-                  <p className="text text-red-600">{errors.email}</p>
-                </div>
+                <ErrorMsg error={errors.email} />
               )}
             </div>
 
@@ -80,18 +74,15 @@ export const Contact = () => {
                 error={touched.message && errors.message ? true : false}
               />
               {touched.message && errors.message && (
-                <div>
-                  <p className="text text-red-600">{errors.message}</p>
-                </div>
+                <ErrorMsg error={errors.message} />
               )}
             </div>
             <div>
-              <button
-                className="block w-full my-5 rounded-md bg-black px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-white hover:text-black border   hover:border-black"
-                type="submit"
-              >
-                Enviar
-              </button>
+              <Button variant="filled">
+                <div className="flex justify-center align-center items-center gap-1">
+                  <span>Enviar</span>
+                </div>
+              </Button>
             </div>
           </form>
         </div>
