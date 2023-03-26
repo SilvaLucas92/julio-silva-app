@@ -1,5 +1,4 @@
 import Head from "next/head";
-import Image from "next/image";
 import { Poppins } from "next/font/google";
 import Layout from "../components/layout/Layout";
 import TransitionAnimate from "../@ui/transition/TransitionAnimate";

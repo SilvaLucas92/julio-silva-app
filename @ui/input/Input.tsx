@@ -1,5 +1,5 @@
 import clsx from "clsx";
-import { useRef } from "react";
+import { useMemo, useRef } from "react";
 
 interface InputProps {
   label: string;
@@ -25,12 +25,12 @@ interface StylesProps {
 }
 
 const styles = {
-  base: "rounded-lg border-transparent flex-1 appearance-none border w-full py-2 px-3.5 bg-white text-gray-700  shadow-sm text-base focus:outline-none focus:ring-2 focus:border-transparent",
+  base: "rounded-lg border-transparent flex-1 appearance-none border w-full py-2 px-3.5 bg-white text-gray-700  shadow-sm text-base focus:outline-none focus:ring-2 focus:border-transparent ",
   state: {
-    normal: "placeholder-gray-400 border-gray-300 focus:ring-purple-600",
-    error: "border-red-600 focus:ring-red-600",
-    valid: "border-green-600 focus:ring-green-600",
-    disabled: "cursor-not-allowed bg-gray-100 shadow-inner text-gray-400",
+    normal: " placeholder-gray-400 border-gray-300 focus:ring-purple-600 ",
+    error: " border-red-600 focus:ring-red-600 ",
+    valid: " border-green-600 focus:ring-green-600 ",
+    disabled: " cursor-not-allowed bg-gray-100 shadow-inner text-gray-400 ",
   },
 };
 
@@ -41,12 +41,20 @@ export const Input = ({
   onChange,
   onBlur,
   type,
-  error,
+  error = true,
   disabled = false,
   valid = false,
   ...rest
 }: InputProps) => {
-  const inputRef = useRef<HTMLInputElement>(null);
+  const classPath = useMemo(() => {
+    const path = `${
+      error
+        ? `border border-red-600 focus:ring-red-600  `
+        : ` border border-trasparent placeholder-gray-400 border-gray-300 focus:ring-purple-600`
+    } rounded-lg flex-1 appearance-none  w-full py-2 px-3.5 bg-white text-gray-700  shadow-sm text-base  `;
+    return path;
+  }, [error]);
+  console.log(classPath);
   return (
     <div className="flex flex-col gap-1">
       <label className="text-black" htmlFor={name}>
@@ -58,14 +66,8 @@ export const Input = ({
           id={id}
           type="text"
           onChange={onChange}
-          className={clsx([
-            styles.base,
-            error ? styles.state.error : styles.state.normal,
-            valid ? styles.state.valid : styles.state.normal,
-            disabled && styles.state.disabled,
-          ])}
+          className={classPath}
           onBlur={onBlur}
-          ref={inputRef} // Asignar la referencia al input
           {...rest}
         />
       ) : (
@@ -74,14 +76,8 @@ export const Input = ({
           id={id}
           onChange={onChange}
           onBlur={onBlur}
-          className={clsx([
-            styles.base,
-            error ? styles.state.error : styles.state.normal,
-            valid ? styles.state.valid : styles.state.normal,
-            disabled && styles.state.disabled,
-          ])}
+          className={classPath}
           {...rest}
-          // ref={inputRef} // Asignar la referencia al input
         ></textarea>
       )}
     </div>

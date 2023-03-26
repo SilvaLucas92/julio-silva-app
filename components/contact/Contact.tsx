@@ -56,7 +56,7 @@ export const Contact = () => {
                 label="Email"
                 type="text"
                 onChange={handleChange}
-                error={touched.email && errors.email ? true : false}
+                // error={touched.email && errors.email ? true : false}
               />
               {touched.email && errors.email && (
                 <ErrorMsg error={errors.email} />
