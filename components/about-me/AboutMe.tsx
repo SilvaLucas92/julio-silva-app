@@ -6,7 +6,6 @@ export const AboutMe = () => {
   return (
     <Container id="about-me">
       <div className="py-5 flex flex-col gap-2">
-        {/* <Title title="Psicologo Clinico" /> */}
         <div className="flex gap-1">
           <span className="text-3xl text-grayTitle font-bold">Psicologo</span>
           <span className="text-3xl text-black font-bold">Clinico</span>
