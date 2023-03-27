@@ -28,9 +28,9 @@ interface StylesProps {
 const styles = {
   base: "rounded-lg flex-1 appearance-none  w-full py-2 px-3.5 bg-white text-gray-700  shadow-sm text-base",
   state: {
-    normal: ` border border-trasparent placeholder-gray-400 border-gray-300 focus:ring-purple-600`,
-    error: `border border-red-600 focus:ring-red-600  `,
-    valid: " border-green-600 focus:ring-green-600 ",
+    normal: ` active:border-gray-300 border border-trasparent placeholder-gray-400 border-gray-300 focus:ring-purple-600`,
+    error: `border border-red-600 focus:ring-red-600 active:border-red-600 focus:ring focus:ring-red-600   `,
+    valid: " border-green-600 focus:ring-green-600 active:border-green-600  ",
     disabled: " cursor-not-allowed bg-gray-100 shadow-inner text-gray-400 ",
   },
 };
@@ -48,7 +48,6 @@ export const Input = ({
   errorMsg,
   ...rest
 }: InputProps) => {
-
   return (
     <div className="flex flex-col gap-1">
       <label className="text-black" htmlFor={name}>
